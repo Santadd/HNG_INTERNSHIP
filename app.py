@@ -1,17 +1,18 @@
-from flask import Flask
-
+from flask import Flask, jsonify
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
-payload = { "slackUsername": "Santana", "backend": True, "age": 25, "bio": "It is well" }
+
+payload = { "slackUsername": "duahdivine1", 
+           "backend": True, 
+           "age": 25, 
+           "bio": "I am a Backend Developer"
+           }
 
 @app.route('/')
 def home():
-    return payload
-
-
-
-
+    return jsonify(payload)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
