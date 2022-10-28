@@ -1,9 +1,10 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['JSON_SORT_KEYS'] = False
-CORS(app)
 
 
 
@@ -14,6 +15,7 @@ payload = { "slackUsername": "duahdivine1",
            }
 
 @app.route('/')
+@cross_origin()
 def home():
     return jsonify(payload)
 
